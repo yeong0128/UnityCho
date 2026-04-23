@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3f5c303eca49c4142a846bb339aad046
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UIPannel: {instanceID: 0}
+  - cbTrans: {instanceID: 0}
+  - spTrans: {instanceID: 0}
+  - csTrans: {instanceID: 0}
+  - bodyText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

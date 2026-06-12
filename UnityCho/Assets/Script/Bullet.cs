@@ -3,32 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 public class Bullet : MonoBehaviour
 {
-    public float speed = 8f; // Åº¾Ë ÀÌµ¿ ¼Ó·Â
-    private Rigidbody bulletRigidbody; // ÀÌµ¿¿¡ »ç¿ëÇÒ ¸®Áöµå¹Ùµð ÄÄÆ÷³ÍÆ®
+    public float speed = 8f; // Åºï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ó·ï¿½
+    private Rigidbody bulletRigidbody; // ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     
     void Start()
     {
-        // °ÔÀÓ ¿ÀºêÁ§Æ®¿¡¼­ Rigidbody ÄÄÆ÷³ÍÆ®¸¦ Ã£¾Æ bulletRigidbody º¯¼ö¿¡ ÇÒ´ç
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ Rigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½ bulletRigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
         bulletRigidbody = GetComponent<Rigidbody>();
-        // ¸®Áöµå¹ÙµðÀÇ ¼Óµµ = ¾ÕÂÊ ¹æÇâ * ÀÌµ¿ ¼Ó·Â
-        bulletRigidbody.velocity = transform.forward * speed;
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½ ï¿½Óµï¿½ = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ * ï¿½Ìµï¿½ ï¿½Ó·ï¿½
+        bulletRigidbody.linearVelocity = transform.forward * speed;
 
-        //3ÃÊ ÈÄ¿¡ ÀÚ½ÅÀÇ °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+        //3ï¿½ï¿½ ï¿½Ä¿ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä±ï¿½
         Destroy(gameObject, 3f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Ãæµ¹ÇÑ »ó´ë¹æ °ÔÀÓ ¿ÀºêÁ§Æ®°¡ Player ÅÂ±×¸¦ °¡Áø °æ¿ì
+        // ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Player ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (other.tag == "Player")
         {
-            // »ó´ë¹æ °ÔÀÓ ¿ÀºêÁ§Æ®¿¡¼­ PlayerController ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿À±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ PlayerController ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             PlayerController playerController = other.GetComponent<PlayerController>();
 
-            // »ó´ë¹æÀ¸·ÎºÎÅÍ PlayerController ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿À´Â µ¥ ¼º°øÇß´Ù¸é
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ PlayerController ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´Ù¸ï¿½
             if (playerController != null)
             {
-                // »ó´ë¹æÀÇ PlayerController ÄÄÆ÷³ÍÆ®ÀÇ Die() ¸Å¼­µå ½ÇÇà
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PlayerController ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Die() ï¿½Å¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 playerController.Die();
             }
         }

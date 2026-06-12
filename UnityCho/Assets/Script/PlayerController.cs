@@ -4,32 +4,32 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody playerRigidbody; // ÀÌµ¿¿¡ »ç¿ëÇÒ ¸®Áöµå¹Ùµð ÄÄÆ÷³ÍÆ®
-    public float speed = 8f; // ÀÌµ¿ ¼Ó·Â
+    private Rigidbody playerRigidbody; // ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public float speed = 8f; // ï¿½Ìµï¿½ ï¿½Ó·ï¿½
 
     void Start() {
-        // °ÔÀÓ ¿ÀºêÁ§Æ®¿¡¼­ Rigidbody ÄÄÆ÷³ÍÆ®¸¦ Ã£¾Æ playerRigidbody º¯¼ö¿¡ ÇÒ´ç
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ Rigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½ playerRigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        // ¼öÆòÃà°ú ¼öÁ÷ÃàÀÇ ÀÔ·Â°ªÀ» °¨ÁöÇÏ¿© ÀúÀå
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
-        // ½ÇÁ¦ ÀÌµ¿ ¼Óµµ¸¦ ÀÔ·Â°ª°ú ÀÌµ¿ ¼Ó·ÂÀ» »ç¿ëÇØ °áÁ´
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ó·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float xSpeed = xInput * speed;
         float zSpeed = zInput * speed;
 
-        // Vector3 ¼Óµµ¸¦ (xSpeed, 0, zSpeed)·Î »ý¼º
+        // Vector3 ï¿½Óµï¿½ï¿½ï¿½ (xSpeed, 0, zSpeed)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 newVelocity = new Vector3(xSpeed, 0, zSpeed);
-        // ¸®Áöµå¹ÙµðÀÇ ¼Óµµ¿¡ newVelocity¸¦ ÇÒ´ç
-        playerRigidbody.velocity = newVelocity;
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ newVelocityï¿½ï¿½ ï¿½Ò´ï¿½
+        playerRigidbody.linearVelocity = newVelocity;
     }
 
     public void Die() {
-        // ÀÚ½ÅÀÇ °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ºñÈ°¼ºÈ­
+        // ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         gameObject.SetActive(false);
     }
 }

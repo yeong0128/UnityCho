@@ -3,34 +3,64 @@ using UnityEngine;
 
 public class Robotcontroll : MonoBehaviour
 {
-    Animator RBAnl;
+    Animator RBAni;
+    bool isJumping = false;
+
     void Start()
     {
-        RBAnl = GetComponent<Animator>();
+        RBAni = GetComponent<Animator>();
     }
 
     public void SetAnimation(string mode)
     {
+        if (isJumping && mode != "ground") return;
+
         switch (mode)
         {
             case "idle":
-                RBAnl.SetFloat("Speed", 0);
+                RBAni.SetBool("Jump", false);
+                RBAni.SetBool("Grounded", true);
+                RBAni.SetFloat("Speed", 0.0f);
                 break;
             case "walk":
-                RBAnl.SetFloat("Speed", 2.0f);
+                RBAni.SetBool("Jump", false);
+                RBAni.SetBool("Grounded", true);
+                RBAni.SetFloat("Speed", 2.0f);
                 break;
             case "run":
-                RBAnl.SetFloat("Speed", 6.0f);
+                RBAni.SetBool("Jump", false);
+                RBAni.SetBool("Grounded", true);
+                RBAni.SetFloat("Speed", 6.0f);
                 break;
             case "jump":
-                RBAnl.SetBool("Jump", true);
+                isJumping = true;
+                RBAni.SetBool("Grounded", false);
+                RBAni.SetBool("Jump", true);
+                StartCoroutine(ResetJump());
                 break;
             case "ground":
-                RBAnl.SetBool("Ground", true);
-                RBAnl.SetBool("Jump", false);
+                isJumping = false;
+                RBAni.SetBool("Jump", false);
+                RBAni.SetBool("Grounded", true);
+                RBAni.SetFloat("Speed", 0.0f);
                 break;
             default:
                 break;
         }
+    }
+
+    public void OnLand()
+    {
+        isJumping = false;
+        RBAni.SetBool("Jump", false);
+        RBAni.SetBool("Grounded", true);
+    }
+
+    IEnumerator ResetJump()
+    {
+        yield return new WaitForSeconds(1.5f);
+        isJumping = false;
+        RBAni.SetBool("Jump", false);
+        RBAni.SetBool("Grounded", true);
     }
 }

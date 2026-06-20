@@ -6,7 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/0410S.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Main.unity
+    guid: fbd9cd3d3f0a44741b78b51c56e5317c
+  - enabled: 1
+    path: Assets/Scenes/UiControl.unity
+    guid: 8de21b2ac13bf4f47943a51ec5f9c7b0
+  - enabled: 1
+    path: Assets/Scenes/ControlGameobject.unity
+    guid: 3cbaed2d21b7cfc40b0733da2df40a48
+  - enabled: 1
+    path: Assets/Scenes/PlayerCont3D.unity
+    guid: e38159ac14d200941821e5cb6bd25c97
+  - enabled: 1
+    path: Assets/Scenes/Robot.unity
+    guid: e551fe88e1943c34eacbabc79d57f2c8
+  - enabled: 1
+    path: Assets/Scenes/UIControl2.unity
+    guid: 11c8019852695bf4a90e3b9fbdd10542
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

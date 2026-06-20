@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using Unity.Mathematics;
 
 public class PopupUI : MonoBehaviour
 {
@@ -12,9 +10,6 @@ public class PopupUI : MonoBehaviour
     public Transform csTrans;
 
     public TMP_Text bodyText;
-    private InstantiateParameters parentTrans;
-
-    public GameObject BgObjs { get; private set; }
 
     private void Start()
     {
@@ -23,29 +18,8 @@ public class PopupUI : MonoBehaviour
 
     public void showUI()
     {
-        /*        Debug.Log("showUI ½ÇÇàµÊ");
-                UIPannel.SetActive(true);
-                bodyText.text = ClacSceneInfo();*/
-
-        GameObject popUI = Resources.Load<GameObject>("PopupUI");
-        Transform canvasTrans = GameObject.Find("Canvas").transform;
-
-/*        Sprite imgsprite = Resources.Load<Sprite>("images/Unity");
-        Image logoImg = GameObject.Find("LogoImg").GetComponent<Image>();*/
-
-        GameObject popObj = Instantiate(popUI, canvasTrans);
-        popObj.name = "pop";
-
-        Text titTxt = popObj.transform.Find("TitleTxt").gameObject.GetComponent<Text>();
-        titTxt.text = "Scene Info";
-
-        Text bdTxt = popObj.transform.Find("BodyTxt").gameObject.GetComponent<Text>();
-        bdTxt.text = ClacSceneInfo();
-
-        GameObject btnObj = popObj.transform.Find("CloseBtn").gameObject;
-        Button button = btnObj.GetComponent<Button>();
-        Button closeBtn = button;
-        closeBtn.onClick.AddListener(() => hideUI(popObj));
+        UIPannel.SetActive(true);
+        bodyText.text = CalcSceneInfo();
     }
 
     public void hideUI()
@@ -53,36 +27,16 @@ public class PopupUI : MonoBehaviour
         UIPannel.SetActive(false);
     }
 
-    string ClacSceneInfo()
+    string CalcSceneInfo()
     {
- /*       float cbTosp = Vector3.Distance(cbTrans.position, spTrans.position);
-        float cbTocs = Vector3.Distance(cbTrans.position, csTrans.position);*/
-
-        /*        return "¹Ú½º¿Í °ø°úÀÇ °Å¸® : " + cbTosp
-                     + " / ¹Ú½º¿Í Ä¸½¶°úÀÇ °Å¸® : " + cbTocs;*/ //0417²¨ Á» ¼öÁ¤µÊ
-        string retStr = "¹Ú½º¿Í °ø°úÀÇ °Å¸®:";
-        float cbTosp = Vector3.Distance(cbTrans.position, csTrans.position);
-        retStr += cbTosp;
-
-        retStr += "\n¹Ú½º¿Í Ä¸½¶°úÀÇ °Å¸®:";
+        float cbTosp = Vector3.Distance(cbTrans.position, spTrans.position);
         float cbTocs = Vector3.Distance(cbTrans.position, csTrans.position);
-        retStr += cbTocs;
+        float spTocs = Vector3.Distance(spTrans.position, csTrans.position);
 
-        retStr += "\n°ø°ú Ä¸½¶°úÀÇ °Å¸®:";
-        float spTocs = Vector3.Distance(cbTrans.position, csTrans.position);
-        retStr += cbTocs;
-
-        retStr += "\n\nÀüÃ¼°Å¸®:" + (cbTosp + cbTocs + spTocs);
+        string retStr = "ë°•ìŠ¤ì™€ ê³µì˜ ê±°ë¦¬: " + cbTosp;
+        retStr += "\në°•ìŠ¤ì™€ ìº¡ìŠì˜ ê±°ë¦¬: " + cbTocs;
+        retStr += "\nê³µê³¼ ìº¡ìŠì˜ ê±°ë¦¬: " + spTocs;
+        retStr += "\n\nì „ì²´ ê±°ë¦¬: " + (cbTosp + cbTocs + spTocs);
         return retStr;
-    }
-    void hideUI(GameObject hideObj) {
-        Destroy(hideObj);
-    
-    }
-    public void Show3DObjs() {
-        GameObject Objs = Instantiate(BgObjs, Vector3.zero, quaternion.identity, parentTrans);
-        cbTrans = Objs.transform.Find("Cube").transform;
-        spTrans = Objs.transform.Find("Sphere").transform;
-        csTrans = Objs.transform.Find("Capsule").transform;
     }
 }
